@@ -179,7 +179,9 @@ const Todo = ({
         </>
       ) : (
         <>
-          {todo.text}
+          <span style={{ width:"200px",
+        textDecoration: todo.completed ? "line-through" : "none"
+      }}>{todo.text}</span>
           <button onClick={() => toggleComplete(index)}>✔</button>
           <button onClick={() => startEditing(index, todo.text)}>✏️ Edit</button>
           <button onClick={() => removeTodo(index)}>❌</button>
