@@ -79,7 +79,7 @@ const TodoApp = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div style={{ padding: "20px" }}>
-        <h2>Todo List (Drag & Drop with React DnD 🚀)</h2>
+       <h2>ListDone Stay productive 🚀</h2>
 
         {/* Dark Mode Toggle */}
         <button onClick={() => setDarkMode((prev) => !prev)}>
