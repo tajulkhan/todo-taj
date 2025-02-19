@@ -5,12 +5,13 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from 'uuid';
 import { HTML5Backend } from "react-dnd-html5-backend";
-
+import useLocalStorage from "./components/useLocalStorage";
 const TodoApp = () => {
-  const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem("todos");
-    return savedTodos ? JSON.parse(savedTodos) : [];
-  });
+  // const [todos, setTodos] = useState(() => {
+  //   const savedTodos = localStorage.getItem("todos");
+  //   return savedTodos ? JSON.parse(savedTodos) : [];
+  // });
+  const [todos, setTodos] = useLocalStorage("todos", []);
   const [input, setInput] = useState("");
   const [filter, setFilter] = useState("all");
   const [editIndex, setEditIndex] = useState(null);
@@ -179,9 +180,10 @@ const Todo = ({
         </>
       ) : (
         <>
-          <span style={{ width:"200px",
+        <span style={{ width:"200px",
         textDecoration: todo.completed ? "line-through" : "none"
       }}>{todo.text}</span>
+          
           <button onClick={() => toggleComplete(index)}>✔</button>
           <button onClick={() => startEditing(index, todo.text)}>✏️ Edit</button>
           <button onClick={() => removeTodo(index)}>❌</button>
